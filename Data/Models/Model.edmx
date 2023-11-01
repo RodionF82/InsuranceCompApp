@@ -1,0 +1,745 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище InsuranceCompanyDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ClassKBM">
+          <Key>
+            <PropertyRef Name="IdClassKBM" />
+          </Key>
+          <Property Name="IdClassKBM" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Coefficent" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="IdClient" />
+          </Key>
+          <Property Name="IdClient" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Patronymic" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Passport" Type="nvarchar" MaxLength="12" Nullable="false" />
+          <Property Name="Birthday" Type="smalldatetime" Nullable="false" />
+          <Property Name="E-mail" Type="nvarchar" MaxLength="50" />
+          <Property Name="DriversLicenseDate" Type="smalldatetime" Nullable="false" />
+          <Property Name="Phone" Type="nchar" MaxLength="15" />
+          <Property Name="NumOfCrashYear" Type="int" Nullable="false" />
+          <Property Name="IdClassKBM" Type="int" />
+        </EntityType>
+        <EntityType Name="ContractClient">
+          <Key>
+            <PropertyRef Name="IdContractClient" />
+          </Key>
+          <Property Name="IdContractClient" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdContract" Type="int" Nullable="false" />
+          <Property Name="IdClient" Type="int" Nullable="false" />
+          <Property Name="CoefAgeDriver" Type="float" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="IdEmployee" />
+          </Key>
+          <Property Name="IdEmployee" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Patronymic" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Passport" Type="nchar" MaxLength="12" Nullable="false" />
+          <Property Name="Phone" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="EmploymentDate" Type="smalldatetime" Nullable="false" />
+          <Property Name="Birthday" Type="smalldatetime" Nullable="false" />
+          <Property Name="E-mail" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdRole" Type="int" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="InsuranceContract">
+          <Key>
+            <PropertyRef Name="IdContract" />
+          </Key>
+          <Property Name="IdContract" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateCons" Type="smalldatetime" Nullable="false" />
+          <Property Name="DateEnd" Type="smalldatetime" Nullable="false" />
+          <Property Name="IdStatus" Type="int" Nullable="false" />
+          <Property Name="IdInsureType" Type="int" Nullable="false" />
+          <Property Name="IdEmployee" Type="int" Nullable="false" />
+          <Property Name="IdVehicle" Type="int" Nullable="false" />
+          <Property Name="IdRegion" Type="int" Nullable="false" />
+          <Property Name="Price" Type="float" />
+        </EntityType>
+        <EntityType Name="InsuranceType">
+          <Key>
+            <PropertyRef Name="IdInsurType" />
+          </Key>
+          <Property Name="IdInsurType" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="RestrCoeff" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Region">
+          <Key>
+            <PropertyRef Name="IdRegion" />
+          </Key>
+          <Property Name="IdRegion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Coefficent" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="IdRole" />
+          </Key>
+          <Property Name="IdRole" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StatusContract">
+          <Key>
+            <PropertyRef Name="IdStatus" />
+          </Key>
+          <Property Name="IdStatus" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Vehicle">
+          <Key>
+            <PropertyRef Name="IdVehicle" />
+          </Key>
+          <Property Name="IdVehicle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Brand" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Model" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Equipment" Type="nvarchar" MaxLength="40" />
+          <Property Name="Year" Type="int" Nullable="false" />
+          <Property Name="VIN" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Color" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Power" Type="int" Nullable="false" />
+          <Property Name="BaseTariff" Type="int" Nullable="false" />
+          <Property Name="imgPath" Type="nvarchar" MaxLength="50" />
+          <Property Name="NumberPlate" Type="nvarchar" MaxLength="15" />
+        </EntityType>
+        <Association Name="FK_Client_ClassKBM">
+          <End Role="ClassKBM" Type="Self.ClassKBM" Multiplicity="0..1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClassKBM">
+              <PropertyRef Name="IdClassKBM" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="IdClassKBM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContractClient_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="ContractClient" Type="Self.ContractClient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="IdClient" />
+            </Principal>
+            <Dependent Role="ContractClient">
+              <PropertyRef Name="IdClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContractClient_InsuranceContract">
+          <End Role="InsuranceContract" Type="Self.InsuranceContract" Multiplicity="1" />
+          <End Role="ContractClient" Type="Self.ContractClient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InsuranceContract">
+              <PropertyRef Name="IdContract" />
+            </Principal>
+            <Dependent Role="ContractClient">
+              <PropertyRef Name="IdContract" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="IdRole" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="IdRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InsuranceContract_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="InsuranceContract" Type="Self.InsuranceContract" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="IdEmployee" />
+            </Principal>
+            <Dependent Role="InsuranceContract">
+              <PropertyRef Name="IdEmployee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InsuranceContract_InsuranceType">
+          <End Role="InsuranceType" Type="Self.InsuranceType" Multiplicity="1" />
+          <End Role="InsuranceContract" Type="Self.InsuranceContract" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InsuranceType">
+              <PropertyRef Name="IdInsurType" />
+            </Principal>
+            <Dependent Role="InsuranceContract">
+              <PropertyRef Name="IdInsureType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InsuranceContract_Region">
+          <End Role="Region" Type="Self.Region" Multiplicity="1" />
+          <End Role="InsuranceContract" Type="Self.InsuranceContract" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Region">
+              <PropertyRef Name="IdRegion" />
+            </Principal>
+            <Dependent Role="InsuranceContract">
+              <PropertyRef Name="IdRegion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InsuranceContract_StatusContract">
+          <End Role="StatusContract" Type="Self.StatusContract" Multiplicity="1" />
+          <End Role="InsuranceContract" Type="Self.InsuranceContract" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusContract">
+              <PropertyRef Name="IdStatus" />
+            </Principal>
+            <Dependent Role="InsuranceContract">
+              <PropertyRef Name="IdInsureType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InsuranceContract_Vehicle">
+          <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="1" />
+          <End Role="InsuranceContract" Type="Self.InsuranceContract" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicle">
+              <PropertyRef Name="IdVehicle" />
+            </Principal>
+            <Dependent Role="InsuranceContract">
+              <PropertyRef Name="IdVehicle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище InsuranceCompanyDBModelContainer">
+          <EntitySet Name="ClassKBM" EntityType="Self.ClassKBM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContractClient" EntityType="Self.ContractClient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InsuranceContract" EntityType="Self.InsuranceContract" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InsuranceType" EntityType="Self.InsuranceType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Region" EntityType="Self.Region" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StatusContract" EntityType="Self.StatusContract" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vehicle" EntityType="Self.Vehicle" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Client_ClassKBM" Association="Self.FK_Client_ClassKBM">
+            <End Role="ClassKBM" EntitySet="ClassKBM" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContractClient_Client" Association="Self.FK_ContractClient_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="ContractClient" EntitySet="ContractClient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContractClient_InsuranceContract" Association="Self.FK_ContractClient_InsuranceContract">
+            <End Role="InsuranceContract" EntitySet="InsuranceContract" />
+            <End Role="ContractClient" EntitySet="ContractClient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Role" Association="Self.FK_Employee_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InsuranceContract_Employee" Association="Self.FK_InsuranceContract_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="InsuranceContract" EntitySet="InsuranceContract" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InsuranceContract_InsuranceType" Association="Self.FK_InsuranceContract_InsuranceType">
+            <End Role="InsuranceType" EntitySet="InsuranceType" />
+            <End Role="InsuranceContract" EntitySet="InsuranceContract" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InsuranceContract_Region" Association="Self.FK_InsuranceContract_Region">
+            <End Role="Region" EntitySet="Region" />
+            <End Role="InsuranceContract" EntitySet="InsuranceContract" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InsuranceContract_StatusContract" Association="Self.FK_InsuranceContract_StatusContract">
+            <End Role="StatusContract" EntitySet="StatusContract" />
+            <End Role="InsuranceContract" EntitySet="InsuranceContract" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InsuranceContract_Vehicle" Association="Self.FK_InsuranceContract_Vehicle">
+            <End Role="Vehicle" EntitySet="Vehicle" />
+            <End Role="InsuranceContract" EntitySet="InsuranceContract" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="InsuranceCompanyDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ClassKBM">
+          <Key>
+            <PropertyRef Name="IdClassKBM" />
+          </Key>
+          <Property Name="IdClassKBM" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Coefficent" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Client" Relationship="Self.FK_Client_ClassKBM" FromRole="ClassKBM" ToRole="Client" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="IdClient" />
+          </Key>
+          <Property Name="IdClient" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LastName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Patronymic" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Passport" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="E_mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DriversLicenseDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Phone" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="NumOfCrashYear" Type="Int32" Nullable="false" />
+          <Property Name="IdClassKBM" Type="Int32" />
+          <NavigationProperty Name="ClassKBM" Relationship="Self.FK_Client_ClassKBM" FromRole="Client" ToRole="ClassKBM" />
+          <NavigationProperty Name="ContractClient" Relationship="Self.FK_ContractClient_Client" FromRole="Client" ToRole="ContractClient" />
+        </EntityType>
+        <EntityType Name="ContractClient">
+          <Key>
+            <PropertyRef Name="IdContractClient" />
+          </Key>
+          <Property Name="IdContractClient" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdContract" Type="Int32" Nullable="false" />
+          <Property Name="IdClient" Type="Int32" Nullable="false" />
+          <Property Name="CoefAgeDriver" Type="Double" />
+          <NavigationProperty Name="Client" Relationship="Self.FK_ContractClient_Client" FromRole="ContractClient" ToRole="Client" />
+          <NavigationProperty Name="InsuranceContract" Relationship="Self.FK_ContractClient_InsuranceContract" FromRole="ContractClient" ToRole="InsuranceContract" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="IdEmployee" />
+          </Key>
+          <Property Name="IdEmployee" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LastName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Patronymic" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Passport" Type="String" MaxLength="12" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="EmploymentDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="E_mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdRole" Type="Int32" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_Employee_Role" FromRole="Employee" ToRole="Role" />
+          <NavigationProperty Name="InsuranceContract" Relationship="Self.FK_InsuranceContract_Employee" FromRole="Employee" ToRole="InsuranceContract" />
+        </EntityType>
+        <EntityType Name="InsuranceContract">
+          <Key>
+            <PropertyRef Name="IdContract" />
+          </Key>
+          <Property Name="IdContract" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateCons" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DateEnd" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IdStatus" Type="Int32" Nullable="false" />
+          <Property Name="IdInsureType" Type="Int32" Nullable="false" />
+          <Property Name="IdEmployee" Type="Int32" Nullable="false" />
+          <Property Name="IdVehicle" Type="Int32" Nullable="false" />
+          <Property Name="IdRegion" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Double" />
+          <NavigationProperty Name="ContractClient" Relationship="Self.FK_ContractClient_InsuranceContract" FromRole="InsuranceContract" ToRole="ContractClient" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_InsuranceContract_Employee" FromRole="InsuranceContract" ToRole="Employee" />
+          <NavigationProperty Name="InsuranceType" Relationship="Self.FK_InsuranceContract_InsuranceType" FromRole="InsuranceContract" ToRole="InsuranceType" />
+          <NavigationProperty Name="Region" Relationship="Self.FK_InsuranceContract_Region" FromRole="InsuranceContract" ToRole="Region" />
+          <NavigationProperty Name="StatusContract" Relationship="Self.FK_InsuranceContract_StatusContract" FromRole="InsuranceContract" ToRole="StatusContract" />
+          <NavigationProperty Name="Vehicle" Relationship="Self.FK_InsuranceContract_Vehicle" FromRole="InsuranceContract" ToRole="Vehicle" />
+        </EntityType>
+        <EntityType Name="InsuranceType">
+          <Key>
+            <PropertyRef Name="IdInsurType" />
+          </Key>
+          <Property Name="IdInsurType" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RestrCoeff" Type="Double" Nullable="false" />
+          <NavigationProperty Name="InsuranceContract" Relationship="Self.FK_InsuranceContract_InsuranceType" FromRole="InsuranceType" ToRole="InsuranceContract" />
+        </EntityType>
+        <EntityType Name="Region">
+          <Key>
+            <PropertyRef Name="IdRegion" />
+          </Key>
+          <Property Name="IdRegion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Coefficent" Type="Double" Nullable="false" />
+          <NavigationProperty Name="InsuranceContract" Relationship="Self.FK_InsuranceContract_Region" FromRole="Region" ToRole="InsuranceContract" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="IdRole" />
+          </Key>
+          <Property Name="IdRole" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_Employee_Role" FromRole="Role" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="StatusContract">
+          <Key>
+            <PropertyRef Name="IdStatus" />
+          </Key>
+          <Property Name="IdStatus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="InsuranceContract" Relationship="Self.FK_InsuranceContract_StatusContract" FromRole="StatusContract" ToRole="InsuranceContract" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Vehicle">
+          <Key>
+            <PropertyRef Name="IdVehicle" />
+          </Key>
+          <Property Name="IdVehicle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Brand" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Equipment" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Year" Type="Int32" Nullable="false" />
+          <Property Name="VIN" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Color" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Power" Type="Int32" Nullable="false" />
+          <Property Name="BaseTariff" Type="Int32" Nullable="false" />
+          <Property Name="imgPath" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NumberPlate" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="InsuranceContract" Relationship="Self.FK_InsuranceContract_Vehicle" FromRole="Vehicle" ToRole="InsuranceContract" />
+        </EntityType>
+        <Association Name="FK_Client_ClassKBM">
+          <End Role="ClassKBM" Type="Self.ClassKBM" Multiplicity="0..1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClassKBM">
+              <PropertyRef Name="IdClassKBM" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="IdClassKBM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContractClient_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="ContractClient" Type="Self.ContractClient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="IdClient" />
+            </Principal>
+            <Dependent Role="ContractClient">
+              <PropertyRef Name="IdClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContractClient_InsuranceContract">
+          <End Role="InsuranceContract" Type="Self.InsuranceContract" Multiplicity="1" />
+          <End Role="ContractClient" Type="Self.ContractClient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InsuranceContract">
+              <PropertyRef Name="IdContract" />
+            </Principal>
+            <Dependent Role="ContractClient">
+              <PropertyRef Name="IdContract" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="IdRole" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="IdRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InsuranceContract_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="InsuranceContract" Type="Self.InsuranceContract" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="IdEmployee" />
+            </Principal>
+            <Dependent Role="InsuranceContract">
+              <PropertyRef Name="IdEmployee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InsuranceContract_InsuranceType">
+          <End Role="InsuranceType" Type="Self.InsuranceType" Multiplicity="1" />
+          <End Role="InsuranceContract" Type="Self.InsuranceContract" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InsuranceType">
+              <PropertyRef Name="IdInsurType" />
+            </Principal>
+            <Dependent Role="InsuranceContract">
+              <PropertyRef Name="IdInsureType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InsuranceContract_Region">
+          <End Role="Region" Type="Self.Region" Multiplicity="1" />
+          <End Role="InsuranceContract" Type="Self.InsuranceContract" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Region">
+              <PropertyRef Name="IdRegion" />
+            </Principal>
+            <Dependent Role="InsuranceContract">
+              <PropertyRef Name="IdRegion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InsuranceContract_StatusContract">
+          <End Role="StatusContract" Type="Self.StatusContract" Multiplicity="1" />
+          <End Role="InsuranceContract" Type="Self.InsuranceContract" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusContract">
+              <PropertyRef Name="IdStatus" />
+            </Principal>
+            <Dependent Role="InsuranceContract">
+              <PropertyRef Name="IdInsureType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InsuranceContract_Vehicle">
+          <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="1" />
+          <End Role="InsuranceContract" Type="Self.InsuranceContract" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicle">
+              <PropertyRef Name="IdVehicle" />
+            </Principal>
+            <Dependent Role="InsuranceContract">
+              <PropertyRef Name="IdVehicle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="InsuranceCompanyDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ClassKBM" EntityType="Self.ClassKBM" />
+          <EntitySet Name="Client" EntityType="Self.Client" />
+          <EntitySet Name="ContractClient" EntityType="Self.ContractClient" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" />
+          <EntitySet Name="InsuranceContract" EntityType="Self.InsuranceContract" />
+          <EntitySet Name="InsuranceType" EntityType="Self.InsuranceType" />
+          <EntitySet Name="Region" EntityType="Self.Region" />
+          <EntitySet Name="Role" EntityType="Self.Role" />
+          <EntitySet Name="StatusContract" EntityType="Self.StatusContract" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Vehicle" EntityType="Self.Vehicle" />
+          <AssociationSet Name="FK_Client_ClassKBM" Association="Self.FK_Client_ClassKBM">
+            <End Role="ClassKBM" EntitySet="ClassKBM" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContractClient_Client" Association="Self.FK_ContractClient_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="ContractClient" EntitySet="ContractClient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContractClient_InsuranceContract" Association="Self.FK_ContractClient_InsuranceContract">
+            <End Role="InsuranceContract" EntitySet="InsuranceContract" />
+            <End Role="ContractClient" EntitySet="ContractClient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Role" Association="Self.FK_Employee_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InsuranceContract_Employee" Association="Self.FK_InsuranceContract_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="InsuranceContract" EntitySet="InsuranceContract" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InsuranceContract_InsuranceType" Association="Self.FK_InsuranceContract_InsuranceType">
+            <End Role="InsuranceType" EntitySet="InsuranceType" />
+            <End Role="InsuranceContract" EntitySet="InsuranceContract" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InsuranceContract_Region" Association="Self.FK_InsuranceContract_Region">
+            <End Role="Region" EntitySet="Region" />
+            <End Role="InsuranceContract" EntitySet="InsuranceContract" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InsuranceContract_StatusContract" Association="Self.FK_InsuranceContract_StatusContract">
+            <End Role="StatusContract" EntitySet="StatusContract" />
+            <End Role="InsuranceContract" EntitySet="InsuranceContract" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InsuranceContract_Vehicle" Association="Self.FK_InsuranceContract_Vehicle">
+            <End Role="Vehicle" EntitySet="Vehicle" />
+            <End Role="InsuranceContract" EntitySet="InsuranceContract" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище InsuranceCompanyDBModelContainer" CdmEntityContainer="InsuranceCompanyDBEntities">
+          <EntitySetMapping Name="ClassKBM">
+            <EntityTypeMapping TypeName="InsuranceCompanyDBModel.ClassKBM">
+              <MappingFragment StoreEntitySet="ClassKBM">
+                <ScalarProperty Name="IdClassKBM" ColumnName="IdClassKBM" />
+                <ScalarProperty Name="Coefficent" ColumnName="Coefficent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Client">
+            <EntityTypeMapping TypeName="InsuranceCompanyDBModel.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="IdClient" ColumnName="IdClient" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="Passport" ColumnName="Passport" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="E_mail" ColumnName="E-mail" />
+                <ScalarProperty Name="DriversLicenseDate" ColumnName="DriversLicenseDate" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="NumOfCrashYear" ColumnName="NumOfCrashYear" />
+                <ScalarProperty Name="IdClassKBM" ColumnName="IdClassKBM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContractClient">
+            <EntityTypeMapping TypeName="InsuranceCompanyDBModel.ContractClient">
+              <MappingFragment StoreEntitySet="ContractClient">
+                <ScalarProperty Name="IdContractClient" ColumnName="IdContractClient" />
+                <ScalarProperty Name="IdContract" ColumnName="IdContract" />
+                <ScalarProperty Name="IdClient" ColumnName="IdClient" />
+                <ScalarProperty Name="CoefAgeDriver" ColumnName="CoefAgeDriver" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee">
+            <EntityTypeMapping TypeName="InsuranceCompanyDBModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="IdEmployee" ColumnName="IdEmployee" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="Passport" ColumnName="Passport" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="EmploymentDate" ColumnName="EmploymentDate" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="E_mail" ColumnName="E-mail" />
+                <ScalarProperty Name="IdRole" ColumnName="IdRole" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InsuranceContract">
+            <EntityTypeMapping TypeName="InsuranceCompanyDBModel.InsuranceContract">
+              <MappingFragment StoreEntitySet="InsuranceContract">
+                <ScalarProperty Name="IdContract" ColumnName="IdContract" />
+                <ScalarProperty Name="DateCons" ColumnName="DateCons" />
+                <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
+                <ScalarProperty Name="IdStatus" ColumnName="IdStatus" />
+                <ScalarProperty Name="IdInsureType" ColumnName="IdInsureType" />
+                <ScalarProperty Name="IdEmployee" ColumnName="IdEmployee" />
+                <ScalarProperty Name="IdVehicle" ColumnName="IdVehicle" />
+                <ScalarProperty Name="IdRegion" ColumnName="IdRegion" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InsuranceType">
+            <EntityTypeMapping TypeName="InsuranceCompanyDBModel.InsuranceType">
+              <MappingFragment StoreEntitySet="InsuranceType">
+                <ScalarProperty Name="IdInsurType" ColumnName="IdInsurType" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="RestrCoeff" ColumnName="RestrCoeff" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Region">
+            <EntityTypeMapping TypeName="InsuranceCompanyDBModel.Region">
+              <MappingFragment StoreEntitySet="Region">
+                <ScalarProperty Name="IdRegion" ColumnName="IdRegion" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Coefficent" ColumnName="Coefficent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="InsuranceCompanyDBModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="IdRole" ColumnName="IdRole" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StatusContract">
+            <EntityTypeMapping TypeName="InsuranceCompanyDBModel.StatusContract">
+              <MappingFragment StoreEntitySet="StatusContract">
+                <ScalarProperty Name="IdStatus" ColumnName="IdStatus" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="InsuranceCompanyDBModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vehicle">
+            <EntityTypeMapping TypeName="InsuranceCompanyDBModel.Vehicle">
+              <MappingFragment StoreEntitySet="Vehicle">
+                <ScalarProperty Name="IdVehicle" ColumnName="IdVehicle" />
+                <ScalarProperty Name="Brand" ColumnName="Brand" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Equipment" ColumnName="Equipment" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="VIN" ColumnName="VIN" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="Power" ColumnName="Power" />
+                <ScalarProperty Name="BaseTariff" ColumnName="BaseTariff" />
+                <ScalarProperty Name="imgPath" ColumnName="imgPath" />
+                <ScalarProperty Name="NumberPlate" ColumnName="NumberPlate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

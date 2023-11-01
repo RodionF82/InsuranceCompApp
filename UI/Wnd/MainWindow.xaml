@@ -1,0 +1,54 @@
+﻿<Window x:Class="InsuranceCompApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InsuranceCompApp"
+        mc:Ignorable="d"
+        Title="Страховая компания" Height="800" Width="1300"
+        MinHeight="800" MinWidth="1300"
+        MaxHeight="1200" MaxWidth="2000"
+        Icon="/Resources/logoAppBlue.png">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <Grid Background="Azure">
+            <Image Source="/Resources/logoAppBlue.png" 
+                   VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10 0 0 0"/>
+            <TextBlock Text="АвтоГарант" FontFamily="Franklin Gothic Medium" FontSize="30"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4.5*"/>
+                <ColumnDefinition Width="20*"/>
+            </Grid.ColumnDefinitions>
+            <Border BorderThickness="2" BorderBrush="#81BECE" CornerRadius="10" Margin="0 1 1 1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="4*"/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Column="0">
+                    <Button Content="Клиенты" Name="btnClients" Click="btnClients_Click" Style="{StaticResource btnStock}" FontFamily="Franklin Gothic Medium"/>
+                    <Button Content="Договора" Click="btnContracts_Click" Name="btnContracts" Style="{StaticResource btnStock}"/>
+                    <Button Content="Клиент/Договор" Click="btnContractClient_Click" Name="btnContractClient" Style="{StaticResource btnStock}"/>
+                    <Button Content="Авто" Click="btnVehicle_Click" Name="btnVehicle" Style="{StaticResource btnStock}"/>
+                </StackPanel>
+                <StackPanel Grid.Row="1" VerticalAlignment="Bottom">
+                    <Button Content="Сотрудники" Click="btnEmployee_Click" Name="btnEmployee" Style="{StaticResource btnStock}" Margin="5 5 5 0"/>
+                        <Button Content="Выход" Click="btnExit_Click" Name="btnExit" Style="{StaticResource btnAction}"/>
+                </StackPanel>
+            </Grid>
+            </Border>
+            <Frame Grid.Column="1" Name="MainFrame" NavigationUIVisibility="Hidden">
+                
+            </Frame>
+        </Grid>
+        <Grid Grid.Row="2" Background="#81BECE">
+            <TextBlock Name="userTextBlock" Text="Пользователь: Пётр Куликов (администратор)" FontSize="20"/>
+        </Grid>
+    </Grid>
+</Window>
