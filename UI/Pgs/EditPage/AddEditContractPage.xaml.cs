@@ -139,7 +139,7 @@ namespace InsuranceCompApp.UI.Pgs.EditPage
             _currentContract.Price = intResultPrice;
 
             infoRegion = Convert.ToString(_currentContract.Region.Coefficent);
-            txtRegionInfo.Text = "Коэфиициент региона: " + infoRegion;
+            txtRegionInfo.Text = "Коэфиициент региона : " + infoRegion;
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
